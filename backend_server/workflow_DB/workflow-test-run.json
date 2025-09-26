@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "id": "start_0",
+      "type": "start",
+      "meta": {
+        "position": {
+          "x": 186.39660158249967,
+          "y": 381.75
+        }
+      },
+      "data": {
+        "title": "Start",
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "tt": {
+              "type": "integer",
+              "extra": {
+                "index": 0
+              }
+            }
+          },
+          "required": [
+            "tt"
+          ]
+        }
+      }
+    },
+    {
+      "id": "end_0",
+      "type": "end",
+      "meta": {
+        "position": {
+          "x": 1628.951901652517,
+          "y": 345.34325778537664
+        }
+      },
+      "data": {
+        "title": "End",
+        "inputs": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "105270",
+      "type": "setVariable",
+      "meta": {
+        "position": {
+          "x": 749.4786477179274,
+          "y": 357.25
+        }
+      },
+      "data": {
+        "assignments": [
+          {
+            "targetVariable": [
+              "start_0",
+              "tt"
+            ]
+          }
+        ],
+        "title": "++"
+      }
+    },
+    {
+      "id": "condition_i8dwN",
+      "type": "condition",
+      "meta": {
+        "position": {
+          "x": 1189.2152746852223,
+          "y": 337.25
+        }
+      },
+      "data": {
+        "title": "Condition",
+        "conditions": [
+          {
+            "value": {
+              "left": {
+                "type": "ref",
+                "content": [
+                  "start_0",
+                  "tt"
+                ]
+              },
+              "operator": "neq",
+              "right": {
+                "type": "constant",
+                "content": 2,
+                "schema": {
+                  "type": "number",
+                  "extra": {
+                    "weak": true
+                  }
+                }
+              }
+            },
+            "key": "if__WKGF"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "sourceNodeID": "start_0",
+      "targetNodeID": "105270"
+    },
+    {
+      "sourceNodeID": "condition_i8dwN",
+      "targetNodeID": "end_0",
+      "sourcePortID": "if__WKGF"
+    },
+    {
+      "sourceNodeID": "105270",
+      "targetNodeID": "condition_i8dwN"
+    }
+  ]
+}

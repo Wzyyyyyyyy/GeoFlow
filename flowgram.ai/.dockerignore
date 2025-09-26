@@ -1,0 +1,25 @@
+# 忽略 Git 的历史记录
+.git
+.gitignore
+.gitattributes
+
+# 忽略所有 node_modules 文件夹 (最重要)
+**/node_modules
+node_modules
+
+# 忽略所有 Rush 的临时文件和日志
+common/temp
+rush-logs
+
+# 忽略本地的编译产物
+**/dist
+**/build
+
+# 忽略 IDE 和操作系统的配置文件
+.idea
+.vscode
+# 忽略我们用于开发环境的 .devcontainer 文件夹
+.devcontainer
+
+# 忽略日志文件
+*.log

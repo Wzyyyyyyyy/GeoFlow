@@ -1,0 +1,25 @@
+[
+  "introduction",
+  "contact-us",
+  {
+    "type": "dir",
+    "name": "getting-started",
+    "label": "Getting Started"
+  },
+  {
+    "type": "dir",
+    "name": "advanced",
+    "label": "Advanced"
+  },
+  {
+    "type": "dir",
+    "name": "concepts",
+    "label": "Concepts"
+  },
+  {
+    "type": "dir",
+    "name": "runtime",
+    "label": "Runtime (WIP)",
+    "collapsed": true
+  }
+]

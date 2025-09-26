@@ -1,0 +1,98 @@
+/**
+ * Copyright (c) 2025 Bytedance Ltd. and/or its affiliates
+ * SPDX-License-Identifier: MIT
+ */
+
+.node-placeholder {
+  width: 360px;
+
+  background-color: rgba(252, 252, 255, 1);
+  border: 1px solid rgba(68, 83, 130, 0.25);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 2%), 0 2px 6px 0 rgba(0, 0, 0, 4%);
+}
+
+
+.node-placeholder-skeleton {
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(252, 252, 255, 1);
+  border-radius: 8px;
+
+
+  .semi-skeleton-avatar {
+    background-color: rgba(68, 83, 130, 0.25);
+  }
+
+  .semi-skeleton-title {
+    height: 16px;
+    background-color: rgba(82, 100, 154, 0.13);
+    border-radius: 4px;
+  }
+}
+
+
+.node-placeholder-hd {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.node-placeholder-avatar {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  border-radius: 6px;
+}
+
+.node-placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.node-placeholder-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5px;
+}
+
+// 文件: src/components/node-panel/index.module.less
+
+.categorizedPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // 分类之间增加一些间距
+}
+
+.categoryTitle {
+  margin-bottom: 8px !important; // 调整标题下边距
+  color: var(--semi-color-text-2);
+}
+
+.nodeItemList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // 创建一个两列的网格布局
+  gap: 8px; // 网格项之间的间距
+}
+
+.nodeItem {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--semi-color-fill-0);
+  }
+}
+
+.nodeItemIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}

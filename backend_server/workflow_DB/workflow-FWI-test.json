@@ -1,0 +1,380 @@
+{
+  "nodes": [
+    {
+      "id": "start_0",
+      "type": "start",
+      "meta": {
+        "position": {
+          "x": 197.12155099295947,
+          "y": 125.75689801408105
+        }
+      },
+      "data": {
+        "title": "Start",
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "residue": {
+              "type": "integer",
+              "extra": {
+                "index": 0
+              }
+            }
+          },
+          "required": [
+            "residue"
+          ]
+        }
+      }
+    },
+    {
+      "id": "end_0",
+      "type": "end",
+      "meta": {
+        "position": {
+          "x": 2500.1208796019555,
+          "y": 804.7077788863651
+        }
+      },
+      "data": {
+        "title": "End",
+        "inputs": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            }
+          }
+        },
+        "inputsValues": {
+          "result": {
+            "type": "ref",
+            "content": [
+              "start_0",
+              "tt"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "174148",
+      "type": "module",
+      "meta": {
+        "position": {
+          "x": 657.1215509929594,
+          "y": 140.25689801408106
+        }
+      },
+      "data": {
+        "title": "数据带通滤波"
+      }
+    },
+    {
+      "id": "147336",
+      "type": "module",
+      "meta": {
+        "position": {
+          "x": 1117.1215509929596,
+          "y": 140.25689801408106
+        }
+      },
+      "data": {
+        "title": "线性动校正"
+      }
+    },
+    {
+      "id": "187602",
+      "type": "module",
+      "meta": {
+        "position": {
+          "x": 1577.1215509929596,
+          "y": 140.25689801408106
+        }
+      },
+      "data": {
+        "title": "道集静音"
+      }
+    },
+    {
+      "id": "129965",
+      "type": "module",
+      "meta": {
+        "position": {
+          "x": 2037.1215509929596,
+          "y": 140.25689801408106
+        }
+      },
+      "data": {
+        "title": "阻抗转换为密度"
+      }
+    },
+    {
+      "id": "LoopInfinite_G2qBw",
+      "type": "loop-infinite",
+      "meta": {
+        "position": {
+          "x": 154.971952921381,
+          "y": 615.5968093735914
+        }
+      },
+      "data": {
+        "title": "无限循环_1"
+      },
+      "blocks": [
+        {
+          "id": "196858",
+          "type": "module",
+          "meta": {
+            "position": {
+              "x": 1459.3626640608802,
+              "y": 297.15889992587836
+            }
+          },
+          "data": {
+            "title": "更新模型"
+          }
+        },
+        {
+          "id": "141433",
+          "type": "module",
+          "meta": {
+            "position": {
+              "x": 839.5733731383118,
+              "y": 297.15889992587836
+            }
+          },
+          "data": {
+            "title": "梯度计算"
+          }
+        },
+        {
+          "id": "139165",
+          "type": "module",
+          "meta": {
+            "position": {
+              "x": 1724.0000000000002,
+              "y": 84.5
+            }
+          },
+          "data": {
+            "title": "残差计算"
+          }
+        },
+        {
+          "id": "106124",
+          "type": "module",
+          "meta": {
+            "position": {
+              "x": 804,
+              "y": 84.5
+            }
+          },
+          "data": {
+            "title": "线性动校正"
+          }
+        },
+        {
+          "id": "137615",
+          "type": "module",
+          "meta": {
+            "position": {
+              "x": 1264,
+              "y": 84.5
+            }
+          },
+          "data": {
+            "title": "道集静音"
+          }
+        },
+        {
+          "id": "block_start_ejRyl",
+          "type": "block-start",
+          "meta": {
+            "position": {
+              "x": 32,
+              "y": 79.5
+            }
+          },
+          "data": {}
+        },
+        {
+          "id": "block_end_kSQOk",
+          "type": "block-end",
+          "meta": {
+            "position": {
+              "x": 1818.352302230569,
+              "y": 292.15889992587825
+            }
+          },
+          "data": {}
+        },
+        {
+          "id": "block_condition_eFMPR",
+          "type": "condition",
+          "meta": {
+            "position": {
+              "x": 166.0560941572378,
+              "y": 257.72193902554716
+            }
+          },
+          "data": {
+            "title": "根据残差判断是否收敛",
+            "conditions": [
+              {
+                "value": {
+                  "type": "expression",
+                  "content": "",
+                  "left": {
+                    "type": "ref",
+                    "content": [
+                      "start_0",
+                      "residue"
+                    ]
+                  },
+                  "operator": "lt",
+                  "right": {
+                    "type": "constant",
+                    "content": 11,
+                    "schema": {
+                      "type": "number",
+                      "extra": {
+                        "weak": true
+                      }
+                    }
+                  }
+                },
+                "key": "if_vhjLSh"
+              },
+              {
+                "value": {
+                  "type": "expression",
+                  "content": "",
+                  "left": {
+                    "type": "ref",
+                    "content": [
+                      "start_0",
+                      "residue"
+                    ]
+                  },
+                  "operator": "gte",
+                  "right": {
+                    "type": "constant",
+                    "content": 11,
+                    "schema": {
+                      "type": "number",
+                      "extra": {
+                        "weak": true
+                      }
+                    }
+                  }
+                },
+                "key": "if_lHP3WG"
+              }
+            ]
+          }
+        },
+        {
+          "id": "block_break_noxEn",
+          "type": "break",
+          "meta": {
+            "position": {
+              "x": 714.8142995888729,
+              "y": 356.1588999258784
+            }
+          },
+          "data": {
+            "title": "Break"
+          }
+        },
+        {
+          "id": "136063",
+          "type": "setVariable",
+          "meta": {
+            "position": {
+              "x": 344,
+              "y": 45.50000000000004
+            }
+          },
+          "data": {
+            "assignments": [
+              {
+                "targetVariable": [
+                  "start_0",
+                  "residue"
+                ]
+              }
+            ],
+            "title": "模型正演"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "sourceNodeID": "141433",
+          "targetNodeID": "196858"
+        },
+        {
+          "sourceNodeID": "196858",
+          "targetNodeID": "block_end_kSQOk"
+        },
+        {
+          "sourceNodeID": "block_condition_eFMPR",
+          "targetNodeID": "141433",
+          "sourcePortID": "if_vhjLSh"
+        },
+        {
+          "sourceNodeID": "137615",
+          "targetNodeID": "139165"
+        },
+        {
+          "sourceNodeID": "139165",
+          "targetNodeID": "block_condition_eFMPR"
+        },
+        {
+          "sourceNodeID": "136063",
+          "targetNodeID": "106124"
+        },
+        {
+          "sourceNodeID": "106124",
+          "targetNodeID": "137615"
+        },
+        {
+          "sourceNodeID": "block_start_ejRyl",
+          "targetNodeID": "136063"
+        },
+        {
+          "sourceNodeID": "block_condition_eFMPR",
+          "targetNodeID": "block_break_noxEn",
+          "sourcePortID": "if_lHP3WG"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "sourceNodeID": "start_0",
+      "targetNodeID": "174148"
+    },
+    {
+      "sourceNodeID": "LoopInfinite_G2qBw",
+      "targetNodeID": "end_0"
+    },
+    {
+      "sourceNodeID": "174148",
+      "targetNodeID": "147336"
+    },
+    {
+      "sourceNodeID": "147336",
+      "targetNodeID": "187602"
+    },
+    {
+      "sourceNodeID": "187602",
+      "targetNodeID": "129965"
+    },
+    {
+      "sourceNodeID": "129965",
+      "targetNodeID": "LoopInfinite_G2qBw"
+    }
+  ]
+}

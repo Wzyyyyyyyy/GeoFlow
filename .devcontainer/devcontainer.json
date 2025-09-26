@@ -1,0 +1,24 @@
+{
+  "name": "Full Workflow Dev Container",
+  "dockerFile": "Dockerfile",
+
+  // 关键改动：在执行 rush install 之前，先进入 flowgram.ai 目录
+  "postCreateCommand": "cd flowgram.ai && rush install --purge",
+
+  "forwardPorts": [3000, 4000, 8088], // 同时映射前端和后端的端口
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "golang.go" // (可选) 如果您的 backend_server 是 Go，可以加上 Go 插件
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-from-docker:1": {}
+  },
+  
+  "remoteUser": "node"
+}

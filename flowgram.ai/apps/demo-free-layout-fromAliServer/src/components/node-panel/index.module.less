@@ -1,0 +1,62 @@
+// 文件: src/components/node-panel/index.module.less (两列布局优化版)
+
+.categorizedPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 10px 16px;
+}
+
+.searchBar {
+  padding-bottom: 8px;
+  border-bottom: 1px  var(--semi-color-border);
+}
+
+.categorySection {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 20px 0px;
+}
+
+.categoryTitle {
+  padding: 0 4px; // 调整一下边距
+  margin-bottom: 0px !important;
+  font-size: 12px !important;
+  color: var(--semi-color-text-2);
+  font-weight: 600;
+}
+
+// --- ↓↓ 核心修改在这里 ↓↓ ---
+.nodeItemList {
+  display: grid;
+  // 将 grid-template-columns 设置为 repeat(2, 1fr) 来创建两列等宽的网格
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px 100px; // 网格项之间的水平和垂直间距
+}
+
+.nodeItem {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: var(--semi-color-fill-0);
+  }
+}
+
+.nodeItemIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.nodeItemTitle {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

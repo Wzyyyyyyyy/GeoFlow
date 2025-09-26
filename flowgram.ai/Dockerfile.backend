@@ -1,0 +1,34 @@
+
+FROM node:22-alpine AS builder
+WORKDIR /app
+
+RUN npm install -g pnpm @microsoft/rush
+
+COPY . .
+
+RUN rush update --purge
+RUN rush build
+
+
+FROM node:22-alpine
+
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+COPY --from=builder /app/rush.json /app/
+COPY --from=builder /app/package.json /app/
+COPY --from=builder /app/common/config/rush/pnpm-lock.yaml /app/common/config/rush/
+
+COPY --from=builder /app/packages/runtime/nodejs /app/packages/runtime/nodejs
+COPY --from=builder /app/packages/runtime/js-core /app/packages/runtime/js-core
+COPY --from=builder /app/packages/runtime/interface /app/packages/runtime/interface
+
+RUN pnpm install --prod
+
+# 进入 nodejs 服务的目录
+WORKDIR /app/packages/runtime/nodejs
+    
+EXPOSE 4000
+
+CMD ["npm", "run", "start"]

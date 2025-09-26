@@ -1,0 +1,1041 @@
+{
+  "nodes": [
+    {
+      "id": "start_0",
+      "type": "start",
+      "meta": {
+        "position": {
+          "x": 142.71999641400873,
+          "y": 463.7619602679091
+        }
+      },
+      "data": {
+        "title": "Start",
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "default": "Hello Flow."
+            },
+            "enable": {
+              "type": "boolean",
+              "default": true
+            },
+            "array_obj": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "int": {
+                    "type": "number"
+                  },
+                  "str": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "condition_0",
+      "type": "condition",
+      "meta": {
+        "position": {
+          "x": 652.8869139920707,
+          "y": 365.2619602679091
+        }
+      },
+      "data": {
+        "title": "Condition",
+        "conditions": [
+          {
+            "key": "if_0",
+            "value": {
+              "left": {
+                "type": "ref",
+                "content": [
+                  "start_0",
+                  "query"
+                ]
+              },
+              "operator": "contains",
+              "right": {
+                "type": "constant",
+                "content": "Hello Flow."
+              }
+            }
+          },
+          {
+            "key": "if_f0rOAt",
+            "value": {
+              "left": {
+                "type": "ref",
+                "content": [
+                  "start_0",
+                  "enable"
+                ]
+              },
+              "operator": "is_true"
+            }
+          },
+          {
+            "value": {
+              "type": "expression",
+              "content": "",
+              "left": {
+                "type": "ref",
+                "content": [
+                  "start_0"
+                ]
+              }
+            },
+            "key": "if_tQJVun"
+          }
+        ]
+      }
+    },
+    {
+      "id": "end_0",
+      "type": "end",
+      "meta": {
+        "position": {
+          "x": 3375.1728405640333,
+          "y": 380.7619602679091
+        }
+      },
+      "data": {
+        "title": "End",
+        "inputs": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "group_5ci0o",
+      "type": "group",
+      "meta": {
+        "position": {
+          "x": 320.2795385391972,
+          "y": -122.18803973209096
+        }
+      },
+      "data": {
+        "parentID": "root",
+        "blockIDs": [
+          "llm_8--A3",
+          "llm_vTyMa"
+        ]
+      }
+    },
+    {
+      "id": "llm_8--A3",
+      "type": "llm",
+      "meta": {
+        "position": {
+          "x": 1218.6946151467664,
+          "y": 9.249999999999993
+        }
+      },
+      "data": {
+        "title": "LLM_1",
+        "inputsValues": {
+          "modelName": {
+            "type": "constant",
+            "content": "gpt-3.5-turbo"
+          },
+          "apiKey": {
+            "type": "constant",
+            "content": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          },
+          "apiHost": {
+            "type": "constant",
+            "content": "https://mock-ai-url/api/v3"
+          },
+          "temperature": {
+            "type": "constant",
+            "content": 0.5
+          },
+          "systemPrompt": {
+            "type": "constant",
+            "content": "# Role\nYou are an AI assistant.\n"
+          },
+          "prompt": {
+            "type": "constant",
+            "content": "# User Input\nquery:{{start_0.query}}\nenable:{{start_0.enable}}"
+          }
+        },
+        "inputs": {
+          "type": "object",
+          "required": [
+            "modelName",
+            "apiKey",
+            "apiHost",
+            "temperature",
+            "prompt"
+          ],
+          "properties": {
+            "modelName": {
+              "type": "string"
+            },
+            "apiKey": {
+              "type": "string"
+            },
+            "apiHost": {
+              "type": "string"
+            },
+            "temperature": {
+              "type": "number"
+            },
+            "systemPrompt": {
+              "type": "string",
+              "extra": {
+                "formComponent": "prompt-editor"
+              }
+            },
+            "prompt": {
+              "type": "string",
+              "extra": {
+                "formComponent": "prompt-editor"
+              }
+            }
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "llm_vTyMa",
+      "type": "llm",
+      "meta": {
+        "position": {
+          "x": 1621.3675909579388,
+          "y": 19.24999999999997
+        }
+      },
+      "data": {
+        "title": "LLM_2",
+        "inputsValues": {
+          "modelName": {
+            "type": "constant",
+            "content": "gpt-3.5-turbo"
+          },
+          "apiKey": {
+            "type": "constant",
+            "content": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          },
+          "apiHost": {
+            "type": "constant",
+            "content": "https://mock-ai-url/api/v3"
+          },
+          "temperature": {
+            "type": "constant",
+            "content": 0.5
+          },
+          "systemPrompt": {
+            "type": "constant",
+            "content": "# Role\nYou are an AI assistant.\n"
+          },
+          "prompt": {
+            "type": "constant",
+            "content": "# LLM Input\nresult:{{llm_8--A3.result}}"
+          }
+        },
+        "inputs": {
+          "type": "object",
+          "required": [
+            "modelName",
+            "apiKey",
+            "apiHost",
+            "temperature",
+            "prompt"
+          ],
+          "properties": {
+            "modelName": {
+              "type": "string"
+            },
+            "apiKey": {
+              "type": "string"
+            },
+            "apiHost": {
+              "type": "string"
+            },
+            "temperature": {
+              "type": "number"
+            },
+            "systemPrompt": {
+              "type": "string",
+              "extra": {
+                "formComponent": "prompt-editor"
+              }
+            },
+            "prompt": {
+              "type": "string",
+              "extra": {
+                "formComponent": "prompt-editor"
+              }
+            }
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "docker_IHR5q",
+      "type": "GPP",
+      "meta": {
+        "position": {
+          "x": 1863.246639702694,
+          "y": 471.2564400948925
+        }
+      },
+      "data": {
+        "inputsValues": {
+          "title": {
+            "type": "constant",
+            "content": "Docker Container 1"
+          },
+          "host": {
+            "type": "constant",
+            "content": "unix:///var/run/docker.sock"
+          },
+          "imageName": {
+            "type": "constant",
+            "content": "hello-world"
+          },
+          "forcePull": {
+            "type": "constant",
+            "content": false
+          },
+          "containerName": {
+            "type": "constant",
+            "content": ""
+          },
+          "command": {
+            "type": "constant",
+            "content": ""
+          },
+          "envVars": {
+            "type": "constant",
+            "content": ""
+          },
+          "ports": {
+            "type": "constant",
+            "content": ""
+          },
+          "volumes": {
+            "type": "constant",
+            "content": ""
+          }
+        },
+        "inputs": {
+          "type": "object",
+          "required": [
+            "imageName",
+            "title"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "节点标题"
+            },
+            "host": {
+              "type": "string",
+              "title": "主机地址"
+            },
+            "imageName": {
+              "type": "string",
+              "title": "镜像名称"
+            },
+            "forcePull": {
+              "type": "boolean",
+              "title": "总是拉取最新镜像"
+            },
+            "containerName": {
+              "type": "string",
+              "title": "容器名称 (可选)"
+            },
+            "command": {
+              "type": "string",
+              "title": "启动命令 (可选)"
+            },
+            "envVars": {
+              "type": "string",
+              "title": "环境变量 (可选)",
+              "extra": {
+                "formComponent": "textarea"
+              }
+            },
+            "ports": {
+              "type": "string",
+              "title": "端口映射 (可选)",
+              "extra": {
+                "placeholder": "例如: 8080:80"
+              }
+            },
+            "volumes": {
+              "type": "string",
+              "title": "数据卷挂载 (可选)",
+              "extra": {
+                "placeholder": "例如: /host/path:/container/path"
+              }
+            }
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "containerId": {
+              "type": "string"
+            },
+            "logs": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        },
+        "title": "GPP"
+      }
+    },
+    {
+      "id": "docker_P5ZJ7",
+      "type": "Docker",
+      "meta": {
+        "position": {
+          "x": 2366.647129497136,
+          "y": 471.2564400948925
+        }
+      },
+      "data": {
+        "inputsValues": {
+          "title": {
+            "type": "constant",
+            "content": "Docker Container 1"
+          },
+          "host": {
+            "type": "constant",
+            "content": "unix:///var/run/docker.sock"
+          },
+          "imageName": {
+            "type": "constant",
+            "content": "hello-world"
+          },
+          "forcePull": {
+            "type": "constant",
+            "content": false
+          },
+          "containerName": {
+            "type": "constant",
+            "content": ""
+          },
+          "command": {
+            "type": "constant",
+            "content": ""
+          },
+          "envVars": {
+            "type": "constant",
+            "content": ""
+          },
+          "ports": {
+            "type": "constant",
+            "content": ""
+          },
+          "volumes": {
+            "type": "constant",
+            "content": ""
+          }
+        },
+        "inputs": {
+          "type": "object",
+          "required": [
+            "imageName",
+            "title"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "节点标题"
+            },
+            "host": {
+              "type": "string",
+              "title": "主机地址"
+            },
+            "imageName": {
+              "type": "string",
+              "title": "镜像名称"
+            },
+            "forcePull": {
+              "type": "boolean",
+              "title": "总是拉取最新镜像"
+            },
+            "containerName": {
+              "type": "string",
+              "title": "容器名称 (可选)"
+            },
+            "command": {
+              "type": "string",
+              "title": "启动命令 (可选)"
+            },
+            "envVars": {
+              "type": "string",
+              "title": "环境变量 (可选)",
+              "extra": {
+                "formComponent": "textarea"
+              }
+            },
+            "ports": {
+              "type": "string",
+              "title": "端口映射 (可选)",
+              "extra": {
+                "placeholder": "例如: 8080:80"
+              }
+            },
+            "volumes": {
+              "type": "string",
+              "title": "数据卷挂载 (可选)",
+              "extra": {
+                "placeholder": "例如: /host/path:/container/path"
+              }
+            }
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "containerId": {
+              "type": "string"
+            },
+            "logs": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        },
+        "title": "Docker"
+      }
+    },
+    {
+      "id": "docker_ORV6I",
+      "type": "Diskin",
+      "meta": {
+        "position": {
+          "x": 1325.6613150953356,
+          "y": 471.2564400948925
+        }
+      },
+      "data": {
+        "inputsValues": {
+          "title": {
+            "type": "constant",
+            "content": "Docker Container 1"
+          },
+          "host": {
+            "type": "constant",
+            "content": "unix:///var/run/docker.sock"
+          },
+          "imageName": {
+            "type": "constant",
+            "content": "hello-world"
+          },
+          "forcePull": {
+            "type": "constant",
+            "content": false
+          },
+          "containerName": {
+            "type": "constant",
+            "content": ""
+          },
+          "command": {
+            "type": "constant",
+            "content": ""
+          },
+          "envVars": {
+            "type": "constant",
+            "content": ""
+          },
+          "ports": {
+            "type": "constant",
+            "content": ""
+          },
+          "volumes": {
+            "type": "constant",
+            "content": ""
+          }
+        },
+        "inputs": {
+          "type": "object",
+          "required": [
+            "imageName",
+            "title"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "节点标题"
+            },
+            "host": {
+              "type": "string",
+              "title": "主机地址"
+            },
+            "imageName": {
+              "type": "string",
+              "title": "镜像名称"
+            },
+            "forcePull": {
+              "type": "boolean",
+              "title": "总是拉取最新镜像"
+            },
+            "containerName": {
+              "type": "string",
+              "title": "容器名称 (可选)"
+            },
+            "command": {
+              "type": "string",
+              "title": "启动命令 (可选)"
+            },
+            "envVars": {
+              "type": "string",
+              "title": "环境变量 (可选)",
+              "extra": {
+                "formComponent": "textarea"
+              }
+            },
+            "ports": {
+              "type": "string",
+              "title": "端口映射 (可选)",
+              "extra": {
+                "placeholder": "例如: 8080:80"
+              }
+            },
+            "volumes": {
+              "type": "string",
+              "title": "数据卷挂载 (可选)",
+              "extra": {
+                "placeholder": "例如: /host/path:/container/path"
+              }
+            }
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "containerId": {
+              "type": "string"
+            },
+            "logs": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        },
+        "title": "Diskin"
+      }
+    },
+    {
+      "id": "docker_KzZ1n",
+      "type": "Diskout",
+      "meta": {
+        "position": {
+          "x": 2870.047619291578,
+          "y": 471.2564400948925
+        }
+      },
+      "data": {
+        "inputsValues": {
+          "title": {
+            "type": "constant",
+            "content": "Docker Container 1"
+          },
+          "host": {
+            "type": "constant",
+            "content": "unix:///var/run/docker.sock"
+          },
+          "imageName": {
+            "type": "constant",
+            "content": "hello-world"
+          },
+          "forcePull": {
+            "type": "constant",
+            "content": false
+          },
+          "containerName": {
+            "type": "constant",
+            "content": ""
+          },
+          "command": {
+            "type": "constant",
+            "content": ""
+          },
+          "envVars": {
+            "type": "constant",
+            "content": ""
+          },
+          "ports": {
+            "type": "constant",
+            "content": ""
+          },
+          "volumes": {
+            "type": "constant",
+            "content": ""
+          }
+        },
+        "inputs": {
+          "type": "object",
+          "required": [
+            "imageName",
+            "title"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "节点标题"
+            },
+            "host": {
+              "type": "string",
+              "title": "主机地址"
+            },
+            "imageName": {
+              "type": "string",
+              "title": "镜像名称"
+            },
+            "forcePull": {
+              "type": "boolean",
+              "title": "总是拉取最新镜像"
+            },
+            "containerName": {
+              "type": "string",
+              "title": "容器名称 (可选)"
+            },
+            "command": {
+              "type": "string",
+              "title": "启动命令 (可选)"
+            },
+            "envVars": {
+              "type": "string",
+              "title": "环境变量 (可选)",
+              "extra": {
+                "formComponent": "textarea"
+              }
+            },
+            "ports": {
+              "type": "string",
+              "title": "端口映射 (可选)",
+              "extra": {
+                "placeholder": "例如: 8080:80"
+              }
+            },
+            "volumes": {
+              "type": "string",
+              "title": "数据卷挂载 (可选)",
+              "extra": {
+                "placeholder": "例如: /host/path:/container/path"
+              }
+            }
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "properties": {
+            "containerId": {
+              "type": "string"
+            },
+            "logs": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        },
+        "title": "Diskout"
+      }
+    },
+    {
+      "id": "LoopInfinite_F2NdM",
+      "type": "loop-infinite",
+      "meta": {
+        "position": {
+          "x": 2185.8737672806174,
+          "y": 821.2775010018623
+        }
+      },
+      "data": {
+        "title": "无限循环_1"
+      },
+      "blocks": [
+        {
+          "id": "block_start_GFHA4",
+          "type": "block-start",
+          "meta": {
+            "position": {
+              "x": -682.7500548512891,
+              "y": 163.10587355467197
+            }
+          },
+          "data": {}
+        },
+        {
+          "id": "block_end_xhab9",
+          "type": "block-end",
+          "meta": {
+            "position": {
+              "x": 455.1194486024753,
+              "y": 115.90547125447046
+            }
+          },
+          "data": {}
+        },
+        {
+          "id": "block_condition_tWw63",
+          "type": "condition",
+          "meta": {
+            "position": {
+              "x": 76.14003888742904,
+              "y": 120.1058735546721
+            }
+          },
+          "data": {
+            "title": "循环 break 条件",
+            "conditions": [
+              {
+                "key": "if_vhjLSh",
+                "value": {
+                  "type": "expression",
+                  "content": ""
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "block_break_pbjs4",
+          "type": "block-break",
+          "meta": {
+            "position": {
+              "x": 455.1194486024753,
+              "y": 211.8109425089409
+            }
+          },
+          "data": {
+            "title": "Break"
+          }
+        },
+        {
+          "id": "docker_zSvhV",
+          "type": "MPI",
+          "meta": {
+            "position": {
+              "x": -405.7995546267922,
+              "y": -14.394126445328084
+            }
+          },
+          "data": {
+            "inputsValues": {
+              "title": {
+                "type": "constant",
+                "content": "Docker Container 1"
+              },
+              "host": {
+                "type": "constant",
+                "content": "unix:///var/run/docker.sock"
+              },
+              "imageName": {
+                "type": "constant",
+                "content": "hello-world"
+              },
+              "forcePull": {
+                "type": "constant",
+                "content": false
+              },
+              "containerName": {
+                "type": "constant",
+                "content": ""
+              },
+              "command": {
+                "type": "constant",
+                "content": ""
+              },
+              "envVars": {
+                "type": "constant",
+                "content": ""
+              },
+              "ports": {
+                "type": "constant",
+                "content": ""
+              },
+              "volumes": {
+                "type": "constant",
+                "content": ""
+              }
+            },
+            "inputs": {
+              "type": "object",
+              "required": [
+                "imageName",
+                "title"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "title": "节点标题"
+                },
+                "host": {
+                  "type": "string",
+                  "title": "主机地址"
+                },
+                "imageName": {
+                  "type": "string",
+                  "title": "镜像名称"
+                },
+                "forcePull": {
+                  "type": "boolean",
+                  "title": "总是拉取最新镜像"
+                },
+                "containerName": {
+                  "type": "string",
+                  "title": "容器名称 (可选)"
+                },
+                "command": {
+                  "type": "string",
+                  "title": "启动命令 (可选)"
+                },
+                "envVars": {
+                  "type": "string",
+                  "title": "环境变量 (可选)",
+                  "extra": {
+                    "formComponent": "textarea"
+                  }
+                },
+                "ports": {
+                  "type": "string",
+                  "title": "端口映射 (可选)",
+                  "extra": {
+                    "placeholder": "例如: 8080:80"
+                  }
+                },
+                "volumes": {
+                  "type": "string",
+                  "title": "数据卷挂载 (可选)",
+                  "extra": {
+                    "placeholder": "例如: /host/path:/container/path"
+                  }
+                }
+              }
+            },
+            "outputs": {
+              "type": "object",
+              "properties": {
+                "containerId": {
+                  "type": "string"
+                },
+                "logs": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "edges": [
+        {
+          "sourceNodeID": "block_start_GFHA4",
+          "targetNodeID": "docker_zSvhV"
+        },
+        {
+          "sourceNodeID": "block_condition_tWw63",
+          "targetNodeID": "block_end_xhab9",
+          "sourcePortID": "if_vhjLSh"
+        },
+        {
+          "sourceNodeID": "docker_zSvhV",
+          "targetNodeID": "block_condition_tWw63"
+        },
+        {
+          "sourceNodeID": "block_condition_tWw63",
+          "targetNodeID": "block_break_pbjs4",
+          "sourcePortID": "if_vhjLSh"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "sourceNodeID": "start_0",
+      "targetNodeID": "condition_0"
+    },
+    {
+      "sourceNodeID": "condition_0",
+      "targetNodeID": "llm_8--A3",
+      "sourcePortID": "if_0"
+    },
+    {
+      "sourceNodeID": "condition_0",
+      "targetNodeID": "docker_ORV6I",
+      "sourcePortID": "if_f0rOAt"
+    },
+    {
+      "sourceNodeID": "condition_0",
+      "targetNodeID": "LoopInfinite_F2NdM",
+      "sourcePortID": "if_tQJVun"
+    },
+    {
+      "sourceNodeID": "llm_vTyMa",
+      "targetNodeID": "end_0"
+    },
+    {
+      "sourceNodeID": "docker_KzZ1n",
+      "targetNodeID": "end_0"
+    },
+    {
+      "sourceNodeID": "LoopInfinite_F2NdM",
+      "targetNodeID": "end_0"
+    },
+    {
+      "sourceNodeID": "llm_8--A3",
+      "targetNodeID": "llm_vTyMa"
+    },
+    {
+      "sourceNodeID": "docker_ORV6I",
+      "targetNodeID": "docker_IHR5q"
+    },
+    {
+      "sourceNodeID": "docker_IHR5q",
+      "targetNodeID": "docker_P5ZJ7"
+    },
+    {
+      "sourceNodeID": "docker_P5ZJ7",
+      "targetNodeID": "docker_KzZ1n"
+    }
+  ]
+}
